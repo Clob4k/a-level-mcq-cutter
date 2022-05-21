@@ -178,8 +178,9 @@ def main():
     print("extraction complete")
 
 # 参数设置
-pdf_dir = "D:\\Downloads\\PastPapers\\9702\\2021\\9702_m21_qp_12.pdf"
-current_dir = os.getcwd()
+pdf_dir = "D:\\Downloads\\PastPapers\\9702\\2021\\9702_s21_qp_11.pdf"
+# current_dir = os.getcwd()
+current_dir = "D:\\Program_Design"
 print("working in dict: " + current_dir)
 sep_line()
 
