@@ -61,7 +61,7 @@ def delete_blank(question_zone):
     return q_height
 
 
-def create_path():
+def create_path(pdf_dir):
     # 创建缓存目录
     # tem_dir = os.path.normpath(current_dir + "\\.temp")
     # if not os.path.exists(tem_dir):
@@ -74,6 +74,9 @@ def create_path():
     img_dir = os.path.normpath(current_dir + "\\.pdf")
     if not os.path.exists(img_dir):
         os.makedirs(img_dir)
+    # 创建DB
+    if not os.path.exists(os.path.normpath(current_dir + "\\dataset\\" + os.path.basename(pdf_dir)[:-4])):
+        os.makedirs(os.path.normpath(current_dir + "\\dataset\\" + os.path.basename(pdf_dir)[:-4]))
 
 
 def pdf_to_image(path):
@@ -156,7 +159,7 @@ def clip(pic_dir):
 
 def main():
     # 创建目录  
-    create_path()
+    create_path(pdf_dir)
 
     # 输出pdf图像文件
     pdf_to_image(pdf_dir)
@@ -178,7 +181,7 @@ def main():
     print("extraction complete")
 
 # 参数设置
-pdf_dir = "D:\\Downloads\\PastPapers\\9702\\2021\\9702_s21_qp_11.pdf"
+pdf_dir = "D:\\Downloads\\PastPapers\\9702\\2021\\9702_w21_qp_13.pdf"
 # current_dir = os.getcwd()
 current_dir = "D:\\Program_Design"
 print("working in dict: " + current_dir)

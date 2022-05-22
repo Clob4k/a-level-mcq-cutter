@@ -23,7 +23,7 @@ def create_path():
         os.makedirs(os.path.normpath(current_dir + "\\.info"))
 
 
-def create_info(pic_dir):
+def create_info(pic_dir, index):
     point = set()
 
     ignore_list = ["what", "which", "have", "has", "could", "with", "used", "take",\
@@ -45,13 +45,19 @@ def create_info(pic_dir):
                         continue
                     else:
                         point.add(char)
-    print("="*100)
-    print(text)
-    print("="*100)
+    # print("="*100)
+    # print(text)
+    # print("="*100)
     print(point)
-    print("="*100)
+    # print("="*100)
+    id = os.path.basename(pic_dir)[:14]
+    code = id + "_" + str(index)
+    info = open(os.path.normpath(current_dir + "\\.info\\" + code + ".txt" ), 'w')
+    info.write(code + "\n")
+    info.write(id + "\\.clip\\" + os.path.basename(pic_dir) + "\n")
+    info.write(str(point) + "\n") 
 
-    write_info(str(point))
+    # write_info(str(point))
 
 
 def write_info(line):
@@ -116,10 +122,12 @@ def main():
     # 获取目录下文件个数
     file_list = os.listdir(os.path.normpath(current_dir + "\\.clip"))
     # 切分每张图片
+    index = 1
     for file in file_list:
-        file_path = os.path.normpath(current_dir + "\\.clip") + "/{}".format(file)
+        file_path = os.path.normpath(current_dir + "\\.clip" + "\\{}".format(file))
         if os.path.exists(file_path):
-            create_info(file_path)        
+            create_info(file_path, index)
+        index += 1       
 
 
 if __name__ == "__main__":  
